@@ -23,7 +23,12 @@ output "backup_plan_version" {
   description = "Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan"
 }
 
-output "backup_selection_id" {
+output "backup_selection_by_arns_id" {
   value       = join("", aws_backup_selection.default.*.id)
-  description = "Backup Selection ID"
+  description = "Backup Selection ID (by ARNs)"
+}
+
+output "backup_selection_by_tag_id" {
+  value       = join("", aws_backup_selection.by_tag.*.id)
+  description = "Backup Selection ID (by tag)"
 }
