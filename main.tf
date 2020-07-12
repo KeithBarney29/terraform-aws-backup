@@ -79,3 +79,14 @@ resource "aws_backup_selection" "default" {
   plan_id      = join("", aws_backup_plan.default.*.id)
   resources    = var.backup_resources
 }
+
+  resource "aws_backup_selection" "by_tag" {
+  iam_role_arn = join("", aws_iam_role.default.*.arn)
+  plan_id      = join("", aws_backup_plan.default.*.id)
+
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = var.backup_tag
+    value = "true"
+  }
+}
