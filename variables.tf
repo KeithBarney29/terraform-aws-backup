@@ -79,3 +79,8 @@ variable "backup_resources" {
   type        = list(string)
   description = "An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan"
 }
+
+variable "backup_tag" {
+  type        = string
+  description = "Tag, when if =true will cause resources with this tab to be included in backup_selection_by_tag and assigned to the backup plan"
+}
