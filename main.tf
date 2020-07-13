@@ -81,6 +81,8 @@ resource "aws_backup_selection" "default" {
 }
 
   resource "aws_backup_selection" "by_tag" {
+  count        = var.enabled ? 1 : 0
+  name         = "by_tag-${module.label.id}"
   iam_role_arn = join("", aws_iam_role.default.*.arn)
   plan_id      = join("", aws_backup_plan.default.*.id)
 
